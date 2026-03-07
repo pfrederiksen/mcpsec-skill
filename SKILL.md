@@ -2,16 +2,27 @@
 name: mcpsec
 description: "Scan MCP server configuration files for security vulnerabilities using mcpsec (OWASP MCP Top 10). Use when: auditing MCP tool configs for prompt injection, hardcoded secrets, missing auth, insecure transport, or excessive permissions. Auto-discovers config files for Claude Desktop, Cursor, VS Code, and custom paths. Reports findings by severity. Read-only — never modifies any config."
 metadata:
-  openclaw:
-    requires:
-      bins:
-        - name: mcpsec
-          version: ">=1.0.0"
-          source: "https://github.com/pfrederiksen/mcpsec"
-          install:
-            - "brew install pfrederiksen/tap/mcpsec"
-            - "# or: download from https://github.com/pfrederiksen/mcpsec/releases"
-          verify: "mcpsec version"
+  {
+    "openclaw":
+      {
+        "requires": { "bins": ["mcpsec"] },
+        "install":
+          [
+            {
+              "id": "brew",
+              "kind": "shell",
+              "label": "Install mcpsec (Homebrew, macOS)",
+              "cmd": "brew install pfrederiksen/tap/mcpsec",
+            },
+            {
+              "id": "binary",
+              "kind": "shell",
+              "label": "Install mcpsec (pre-built binary, Linux/macOS) — verify checksum before running",
+              "cmd": "curl -L https://github.com/pfrederiksen/mcpsec/releases/download/v1.0.0/checksums.txt && curl -L https://github.com/pfrederiksen/mcpsec/releases/download/v1.0.0/mcpsec_1.0.0_linux_amd64.tar.gz -o /tmp/mcpsec.tar.gz && sha256sum /tmp/mcpsec.tar.gz && tar -xzf /tmp/mcpsec.tar.gz -C /tmp/ && mv /tmp/mcpsec /usr/local/bin/mcpsec",
+            },
+          ],
+      },
+  }
 ---
 
 # MCPSec
