@@ -1,7 +1,7 @@
 # MCPSec Skill
 
 [![ClawHub](https://img.shields.io/badge/ClawHub-mcpsec--skill-blue)](https://clawhub.ai/pfrederiksen/mcpsec-skill)
-[![Version](https://img.shields.io/badge/version-1.0.3-green)]()
+[![Version](https://img.shields.io/badge/version-1.0.4-green)]()
 
 An [OpenClaw](https://openclaw.ai) skill that wraps [pfrederiksen/mcpsec](https://github.com/pfrederiksen/mcpsec) to periodically audit MCP server configurations against the OWASP MCP Top 10.
 
